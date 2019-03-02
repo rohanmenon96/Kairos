@@ -30,6 +30,7 @@
 </nav>
 
 <h3>{{ city }}</h3>
+<input type="hidden" id="cityName" value="{{city}}">
 
 <div style="max-width: 65%; max-height: 65%; margin: auto">
 
@@ -41,18 +42,19 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
+var city = document.getElementById('cityName').value;
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
 
     // The data for our dataset
     data: {
-        labels: [],
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [{
             label: "My First dataset",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [],
+            data: [0, 10, 5, 2, 20, 30, 45],
         }]
     },
 
@@ -60,7 +62,7 @@ var chart = new Chart(ctx, {
     options: {}
 });
 
-//addData(chart,"January", 20);
+addData(chart,city,20);
 
 function addData(chart, label, data) {
     chart.data.labels.push(label);
