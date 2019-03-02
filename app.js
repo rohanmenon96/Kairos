@@ -27,7 +27,6 @@ app.engine("handlebars", exphndlbars({defaultLayout:""}));
 
 app.listen(80, () => {
   console.log("We've now got a server!");
-  console.log("Seeing Change")
 });
 
 app.post("/changeCity",async(req,res)=>{
