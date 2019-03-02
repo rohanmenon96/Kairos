@@ -30,7 +30,11 @@
 </nav>
 
 <h3>{{ city }}</h3>
+{{!-- timeArr : {{timeArr}}
+tempArr : {{tempArr}} --}}
 <input type="hidden" id="cityName" value="{{city}}">
+<input type="hidden" id="timeArr" value="{{timeArr}}">
+<input type="hidden" id="tempArr" value="{{tempArr}}">
 
 <div style="max-width: 65%; max-height: 65%; margin: auto">
 
@@ -43,18 +47,21 @@
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var city = document.getElementById('cityName').value;
+var timeArr = document.getElementById('timeArr').value;
+var tempArr = document.getElementById('tempArr').value;
+
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
 
     // The data for our dataset
     data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: [],
         datasets: [{
-            label: "My First dataset",
+            label: "Temperature",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data: [],
         }]
     },
 
@@ -62,12 +69,30 @@ var chart = new Chart(ctx, {
     options: {}
 });
 
-addData(chart,city,20);
+timeArr = timeArr.split(",")
+tempArr = tempArr.split(",")
+
+
+
+for(let i=0; i<10; i++)
+  {
+    addData(chart,timeArr[i],tempArr[i])
+    console.log("timeArr", timeArr[i]," tempArr ",tempArr[i])
+  }
+
 
 function addData(chart, label, data) {
     chart.data.labels.push(label);
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);
+    });
+    chart.update();
+}
+
+function removeData(chart) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
     });
     chart.update();
 }
