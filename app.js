@@ -10,6 +10,8 @@ const app = express();
 var city = "";
 var timeArr = [];
 var tempArr = [];
+var desc = "";
+var max,min;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -36,6 +38,8 @@ app.post("/changeCity",async(req,res)=>{
   timeArr = [];
   tempArr = [];
   let temp;
+  desc = data.data.list[0].weather[0].main;
+  console.log("desc: ", desc)
 
   for(let i=0; i<data.data.list.length; i++)
     {
@@ -47,11 +51,26 @@ app.post("/changeCity",async(req,res)=>{
 
   console.log(timeArr.length);
   console.log(tempArr.length);
+  max = -100;
+  min = 999;
+  for(let i=0; i<10; i++)
+    {
+      if(tempArr[i]>max)
+        {
+          max = tempArr[i];
+        }
+      if(tempArr[i]<min)
+        {
+          min = tempArr[i]
+        }
+    }
+  max= Math.trunc(max);
+  min= Math.trunc(min);
   
   console.log("\n\nOutput Data: ", data.data.city)
   res.redirect("/");
 })
 
 app.get("/",(req,res)=>{
-  res.render(path.join(__dirname, "/views/index.handlebars"), {"city" : city, "timeArr": timeArr, "tempArr": tempArr})
+  res.render(path.join(__dirname, "/views/index.handlebars"), {"city" : city, "timeArr": timeArr, "tempArr": tempArr, "desc": desc, "max": max, "min": min})
 })
