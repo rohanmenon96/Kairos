@@ -26,8 +26,12 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
+
 </nav>
-<div class= "center" style="max-width: 65%; max-height: 65%; margin: auto">
+
+<h3>{{ city }}</h3>
+
+<div style="max-width: 65%; max-height: 65%; margin: auto">
 
       <canvas id="myChart"></canvas>
 
@@ -36,25 +40,36 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script>
-  var ctx = document.getElementById('myChart').getContext('2d');
+var ctx = document.getElementById('myChart').getContext('2d');
 var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
 
     // The data for our dataset
     data: {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        labels: [],
         datasets: [{
             label: "My First dataset",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data: [],
         }]
     },
 
     // Configuration options go here
     options: {}
 });
+
+//addData(chart,"January", 20);
+
+function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(data);
+    });
+    chart.update();
+}
+
 </script>
 </body>
 </html>

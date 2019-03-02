@@ -7,6 +7,7 @@ const path = require("path");
 const axios = require("axios");
 
 const app = express();
+var city = "New York"
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -26,12 +27,12 @@ app.listen(80, () => {
 
 app.post("/changeCity",async(req,res)=>{
   console.log("Coming Inside /changeCity route with data ", req.body)
-  const data = await axios.post('http://api.openweathermap.org/data/2.5/forecast?q=London&APPID=e82f066c138586d03df0cc3f61415b63');
+  city = req.body.city;
+  const data = await axios.post('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&APPID=e82f066c138586d03df0cc3f61415b63');
   console.log("\n\nOutput Data: ", data.data.city)
   res.redirect("/");
 })
 
 app.get("/",(req,res)=>{
-  res.sendFile(path.join(__dirname, "/views/index.html"))
+  res.render(path.join(__dirname, "/views/index.handlebars"), {"city" : city})
 })
-
