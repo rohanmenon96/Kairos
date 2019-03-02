@@ -4,6 +4,7 @@ const exphbs = require("express-handlebars");
 const cookieParser = require("cookie-parser");
 const exphndlbars = require("express-handlebars");
 const path = require("path");
+const axios = require("axios");
 
 const app = express();
 
@@ -22,6 +23,13 @@ app.engine("handlebars", exphndlbars({defaultLayout:""}));
 app.listen(80, () => {
   console.log("We've now got a server!");
 });
+
+app.post("/changeCity",async(req,res)=>{
+  console.log("Coming Inside /changeCity route with data ", req.body)
+  const data = await axios.post('http://api.openweathermap.org/data/2.5/forecast?q=London&APPID=e82f066c138586d03df0cc3f61415b63');
+  console.log("\n\nOutput Data: ", data.data.city)
+  res.redirect("/");
+})
 
 app.get("/",(req,res)=>{
   res.sendFile(path.join(__dirname, "/views/index.html"))
