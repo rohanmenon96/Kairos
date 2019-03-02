@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 
 <link rel="stylesheet" href="/views/bootstrap/dist/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 
 </head>
 
 <body style="background:whitesmoke;">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Karios</a>
+  <a class="navbar-brand" href="#" style="font-family: 'Cinzel', serif;"><h4>Karios</h4></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -18,7 +20,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#"><span class="sr-only">(current)</span></a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" method="POST" action="/changeCity">
@@ -30,14 +32,9 @@
 </nav>
 <br>
 
-<div style= "text-align:center">
+<div style= "text-align:center ;font-family: 'Cinzel', serif;">
   <h3>{{ city }}</h3>
 </div>
-
-<hr style= "max-width: 100px;
-    margin: 25px auto 0;
-    border-width: 1px;
-    border-color: rgba(34,34,34,.1);">
 
 <br>
 
@@ -45,7 +42,7 @@
 <input type="hidden" id="timeArr" value="{{timeArr}}">
 <input type="hidden" id="tempArr" value="{{tempArr}}">
 
-<div style="max-width: 67%; max-height: 60%; margin: auto">
+<div style="max-width: 66%; max-height: 66%; margin: auto">
 
       <canvas id="myChart"></canvas>
 
