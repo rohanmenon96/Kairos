@@ -1,0 +1,26 @@
+{
+  "name": "kairos",
+  "version": "1.0.0",
+  "description": "A basic weather app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohanmenon96/Kairos.git"
+  },
+  "author": "Rohan Menon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rohanmenon96/Kairos/issues"
+  },
+  "homepage": "https://github.com/rohanmenon96/Kairos#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "path": "^0.12.7"
+  }
+}
