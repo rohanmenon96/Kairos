@@ -28,15 +28,24 @@
   </div>
 
 </nav>
+<br>
 
-<h3>{{ city }}</h3>
-{{!-- timeArr : {{timeArr}}
-tempArr : {{tempArr}} --}}
+<div style= "text-align:center">
+  <h3>{{ city }}</h3>
+</div>
+
+<hr style= "max-width: 100px;
+    margin: 25px auto 0;
+    border-width: 1px;
+    border-color: rgba(34,34,34,.1);">
+
+<br>
+
 <input type="hidden" id="cityName" value="{{city}}">
 <input type="hidden" id="timeArr" value="{{timeArr}}">
 <input type="hidden" id="tempArr" value="{{tempArr}}">
 
-<div style="max-width: 65%; max-height: 65%; margin: auto">
+<div style="max-width: 67%; max-height: 60%; margin: auto">
 
       <canvas id="myChart"></canvas>
 
