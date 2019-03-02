@@ -7,7 +7,7 @@ const path = require("path");
 const axios = require("axios");
 
 const app = express();
-var city = "New York"
+var city = ""
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
