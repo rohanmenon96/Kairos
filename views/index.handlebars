@@ -45,11 +45,11 @@
 <div style="max-width: 66%; max-height: 66%; margin: auto; float:right">
       
       <div>
-      <canvas id="myChart"  width="700" height="350"></canvas>
+      <canvas id="myChart" width="700" height="350"></canvas>
       </div>
       <div style="margin-left:40%">
-      <button type="button" class="btn btn-outline-success">Hourly</button>
-      <button type="button" class="btn btn-outline-success">Daily</button>
+      <button type="button" class="btn btn-outline-success" onclick="hourlyFn()">Hourly</button>
+      <button type="button" class="btn btn-outline-success" onclick="DailyFn()">Daily</button>
       </div>
 </div>
 <div style="float:left; margin-left:5%;font-family: 'Cinzel', serif;">
@@ -57,7 +57,7 @@
         <h4>
         Max Temperature: {{max}} 	&#186; F
         <br>Min Temperature: {{min}} 	&#186; F
-        <br>Weather Description: {{desc}}
+        <br>Current Weather: {{desc}}
         </h4>
 </div>
 
@@ -117,5 +117,81 @@ function removeData(chart) {
 }
 
 </script>
+<script>
+  function hourlyFn()
+  {
+    console.log("Coming inside hourlyFn")
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var city = document.getElementById('cityName').value;
+    var timeArr = document.getElementById('timeArr').value;
+    var tempArr = document.getElementById('tempArr').value;
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [],
+        datasets: [{
+            label: "Temperature in Fahrenheit",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+    });
+
+    timeArr = timeArr.split(",")
+    tempArr = tempArr.split(",")
+
+    for(let i=0; i<10; i++)
+      {
+        addData(chart,timeArr[i],tempArr[i])
+        console.log("timeArr", timeArr[i]," tempArr ",tempArr[i])
+      }
+  }
+</script>
+<script>
+  function DailyFn()
+  {
+    console.log("Coming inside DailyFn")
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var city = document.getElementById('cityName').value;
+    var timeArr = document.getElementById('timeArr').value;
+    var tempArr = document.getElementById('tempArr').value;
+    var chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [],
+        datasets: [{
+            label: "Temperature in Fahrenheit",
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [],
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+    });
+
+    timeArr = timeArr.split(",")
+    tempArr = tempArr.split(",")
+    console.log("Length of TempArr: ",tempArr.length)
+
+    for(let i=0; i<tempArr.length; i=i+4)
+      {
+        addData(chart,timeArr[i],tempArr[i])
+        console.log("timeArr", timeArr[i]," tempArr ",tempArr[i])
+      }
+  }
+</script>
+
 </body>
 </html>
