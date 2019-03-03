@@ -1,80 +1,50 @@
-# Project Title
+# Kairos
 
-One Paragraph of project description goes here
+A basic and elegant weather application which gives you the current weather and future forecast. The future forecast can be filtered on a daily or hourly basis.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+For using this applcation on your localhost , you will need two things: </br>
+1.NodeJS
+2.NPM
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+1. Install NodeJs on your local machine with a version 8 or above.
+2. If a version below 8 is installed, install nvm to change the version.
+3. After installing NodeJS, install npm with version 5.6 or above
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+After installing NodeJS and NPM,
+1. Extract the zip file to any folder.
+2. CD into the folder using the command prompt
+3. type npm install
+4. type npm start
+5. open localhost and voila!
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+To see the temperatures of various cities, enter different cities in the search bar above.
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+To view this project from everywhere in the world , go to www.efficall.co . I am currently running this website live on that link.
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+* NodeJS
+* ExpressJS
+* Bootstrap
+* ChartJS
+* HTML
+* CSS
+* GIT
+* Google Cloud Platform
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Rohan Menon** - *Initial work* - [rohanmenon96](https://github.com/rohanmenon96)
 
 ## License
 
@@ -82,6 +52,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+*Thank you IDT corporation for giving me this oppurtunity. I have learnt a lot with this project.
