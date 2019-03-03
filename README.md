@@ -17,7 +17,7 @@ For using this applcation on your localhost , you will need two things: </br>
 ### Installing
 
 After installing NodeJS and NPM,
-1. Extract the zip file to any folder.
+1. After cloning or downloading, Extract the zip file to any folder.
 2. CD into the folder using the command prompt
 3. type npm install
 4. type npm start
