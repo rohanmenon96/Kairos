@@ -11,7 +11,8 @@ var city = "";
 var timeArr = [];
 var tempArr = [];
 var desc = "";
-var max,min;
+var max,min, dailyMax, dailyMin;
+var current;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -34,6 +35,10 @@ app.post("/changeCity",async(req,res)=>{
   city = req.body.city;
   const data = await axios.post('http://api.openweathermap.org/data/2.5/forecast?q='+city+'&APPID=e82f066c138586d03df0cc3f61415b63');
   console.log(data.data.list.length);
+  current = data.data.list[0].main.temp;
+  current = (current-273.15)*(9/5)+32; 
+  current = Math.trunc(current);
+  console.log("\n\n\nCurrent: ", current)
 
   timeArr = [];
   tempArr = [];
@@ -52,7 +57,9 @@ app.post("/changeCity",async(req,res)=>{
   console.log(timeArr.length);
   console.log(tempArr.length);
   max = -100;
+  dailyMax = -100
   min = 999;
+  dailyMin = 999;
   for(let i=0; i<10; i++)
     {
       if(tempArr[i]>max)
@@ -64,13 +71,28 @@ app.post("/changeCity",async(req,res)=>{
           min = tempArr[i]
         }
     }
+  for(let i=0; i<tempArr.length; i=i+4)
+    {
+      if(tempArr[i]>dailyMax)
+        {
+          dailyMax = tempArr[i];
+        }
+      if(tempArr[i]<dailyMin)
+        {
+          dailyMin = tempArr[i]
+        }
+    }
   max= Math.trunc(max);
   min= Math.trunc(min);
+  dailyMax= Math.trunc(dailyMax);
+  dailyMin= Math.trunc(dailyMin);
+
+  console.log("Daily max and min: ", dailyMax," ",dailyMin)
   
   console.log("\n\nOutput Data: ", data.data.city)
   res.redirect("/");
 })
 
 app.get("/",(req,res)=>{
-  res.render(path.join(__dirname, "/views/index.handlebars"), {"city" : city, "timeArr": timeArr, "tempArr": tempArr, "desc": desc, "max": max, "min": min})
+  res.render(path.join(__dirname, "/views/index.handlebars"), {"city" : city,"current": current, "timeArr": timeArr, "tempArr": tempArr, "desc": desc, "max": max, "min": min, "dailyMax": dailyMax, "dailyMin": dailyMin})
 })

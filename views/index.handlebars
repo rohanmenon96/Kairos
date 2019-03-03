@@ -34,6 +34,7 @@
 
 <div style= "text-align:center ;font-family: 'Cinzel', serif;">
   <h3>{{ city }}</h3>
+  <hr width="30%">
 </div>
 
 <br>
@@ -41,6 +42,11 @@
 <input type="hidden" id="cityName" value="{{city}}">
 <input type="hidden" id="timeArr" value="{{timeArr}}">
 <input type="hidden" id="tempArr" value="{{tempArr}}">
+<input type="hidden" id="max" value="{{max}}">
+<input type="hidden" id="min" value="{{min}}">
+<input type="hidden" id="dailyMax" value="{{dailyMax}}">
+<input type="hidden" id="dailyMin" value="{{dailyMin}}">
+
 
 <div style="max-width: 66%; max-height: 66%; margin: auto; float:right">
       
@@ -52,11 +58,13 @@
       <button type="button" class="btn btn-outline-success" onclick="DailyFn()">Daily</button>
       </div>
 </div>
-<div style="float:left; margin-left:5%;font-family: 'Cinzel', serif;">
+<div style="float:left; margin-left:3%;font-family: 'Cinzel', serif;">
         <br><br><br>
         <h4>
-        Max Temperature: {{max}} 	&#186; F
-        <br>Min Temperature: {{min}} 	&#186; F
+        Current Temperature: {{current}} 	&#186; F
+        <hr width="30%">
+        <br>Max Temperature: <span id="pmax">{{max}}</span> 	&#186; F
+        <br>Min Temperature: <span id="pmin">{{min}}</span> 	&#186; F
         <br>Current Weather: {{desc}}
         </h4>
 </div>
@@ -96,7 +104,7 @@ tempArr = tempArr.split(",")
 for(let i=0; i<10; i++)
   {
     addData(chart,timeArr[i],tempArr[i])
-    console.log("timeArr", timeArr[i]," tempArr ",tempArr[i])
+    //console.log("timeArr", timeArr[i]," tempArr ",tempArr[i])
   }
 
 
@@ -125,6 +133,11 @@ function removeData(chart) {
     var city = document.getElementById('cityName').value;
     var timeArr = document.getElementById('timeArr').value;
     var tempArr = document.getElementById('tempArr').value;
+    var Max = document.getElementById('max').value;
+    var Min = document.getElementById('min').value;
+    document.getElementById("pmax").innerHTML = Max;
+    document.getElementById("pmin").innerHTML = Min;
+
     var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
@@ -150,7 +163,7 @@ function removeData(chart) {
     for(let i=0; i<10; i++)
       {
         addData(chart,timeArr[i],tempArr[i])
-        console.log("timeArr", timeArr[i]," tempArr ",tempArr[i])
+        //console.log("timeArr", timeArr[i]," tempArr ",tempArr[i])
       }
   }
 </script>
@@ -162,6 +175,13 @@ function removeData(chart) {
     var city = document.getElementById('cityName').value;
     var timeArr = document.getElementById('timeArr').value;
     var tempArr = document.getElementById('tempArr').value;
+    var Max = document.getElementById('dailyMax').value;
+    var Min = document.getElementById('dailyMin').value;
+    document.getElementById("pmax").innerHTML = Max;
+    console.log("Inside daily the max val is: ", Max)
+    document.getElementById("pmin").innerHTML = Min;
+    console.log("Inside daily the min val is: ", Max)
+
     var chart = new Chart(ctx, {
     // The type of chart we want to create
     type: 'line',
@@ -188,7 +208,7 @@ function removeData(chart) {
     for(let i=0; i<tempArr.length; i=i+4)
       {
         addData(chart,timeArr[i],tempArr[i])
-        console.log("timeArr", timeArr[i]," tempArr ",tempArr[i])
+        //console.log("timeArr", timeArr[i]," tempArr ",tempArr[i])
       }
   }
 </script>
