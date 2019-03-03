@@ -38,6 +38,7 @@ To view this project from everywhere in the world , go to www.efficall.co . I am
 * Bootstrap
 * ChartJS
 * HTML
+* Handlebars
 * CSS
 * GIT
 * Google Cloud Platform
