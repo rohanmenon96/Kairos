@@ -5,7 +5,7 @@ A basic and elegant weather application which gives you the current weather and 
 ## Getting Started
 
 For using this applcation on your localhost , you will need two things: </br>
-1.NodeJS
+1.NodeJS<br/>
 2.NPM
 
 ### Prerequisites
